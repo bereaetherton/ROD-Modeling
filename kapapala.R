@@ -210,5 +210,5 @@ kpivp<-kp.spread.mat[,dl]
 #saving the image to the working directory
 
 NAME <- paste(ARG[1], ARG[2], sep="_")  
-save.image(paste0("/blue/garrett/betherton/ROD/",NAME, ".RData"))
+save.image(paste0("/blue/garrett/betherton/ROD/","KP.Datat", NAME, ".RData"))
 
