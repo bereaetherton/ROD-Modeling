@@ -32,9 +32,9 @@ kp.utm<-read_excel("/blue/garrett/betherton/ROD/Kapapala_2021_02_05_for_Karen (1
                           sheet = "FINAL")
 kp.utm<-data.matrix(kp.utm)
 kp.utm<-kp.utm[c(1:4134,4136:4205),c(55,56)] #filtering out broken data
-kp.ll<-vect(kp.utm,crs="+proj=utm +zone=5n +datum=WGS84  +units=m")
-kp<- project(kp.ll, "+proj=longlat +datum=WGS84")
-kp<-geom(kp)[,c("x","y")]
+kp.ll<-vect(kp.utm,crs="+proj=utm +zone=5n +datum=WGS84  +units=m") #data is in UTM zone 5n
+kp<- project(kp.ll, "+proj=longlat +datum=WGS84") #convert this data to lat/lon
+kp<-geom(kp)[,c("x","y")] #create a matrix called kp with the lat/lon data set
 colnames(kp)<-c("Lon","Lat")
 rm(kp.utm)
 rm(kp.ll)
@@ -70,7 +70,7 @@ kp.dist.mat<-matrix(0,nrow=size,ncol=size)
 for(i in 1:size){
  for(j in 1:size){
     if(kp.dist.mat[j,i]==0){
-      kp.dist.mat[i,j]<-distGeo(kp[(i),],kp[(j),])
+      kp.dist.mat[i,j]<-distGeo(kp[(i),],kp[(j),]) #using geodesic distances
     }
   }
 }
