@@ -84,16 +84,16 @@ for(i in 1:size){
 
 #using distance matrix to creating the negative exponential
 
-for(i in 1:size){
-  for(j in 1:size){
-    if(ana.dist.mat[i,j]==0){
-      ivp.ana.mat[i,j]<-0
-    }
-    else{
-      ivp.ana.mat[i,j]<-exp(ana.dist.mat[i,j]*(-beta))
-    }
-  }
-}
+#for(i in 1:size){
+#  for(j in 1:size){
+#    if(ana.dist.mat[i,j]==0){
+#      ivp.ana.mat[i,j]<-0
+#    }
+#    else{
+#      ivp.ana.mat[i,j]<-exp(ana.dist.mat[i,j]*(-beta))
+#    }
+#  }
+#}
 
 min<-min(ivp.ana.mat[which(ivp.ana.mat>0)])
 max<-max(ivp.ana.mat)
