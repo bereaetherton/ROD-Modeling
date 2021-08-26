@@ -81,6 +81,20 @@ for(i in 1:size){
   }
 }
 
+
+#using distance matrix to creating the negative exponential
+
+for(i in 1:size){
+  for(j in 1:size){
+    if(ana.dist.mat[i,j]==0){
+      ivp.ana.mat[i,j]<-0
+    }
+    else{
+      ivp.ana.mat[i,j]<-exp(ana.dist.mat[i,j]*(-beta))
+    }
+  }
+}
+
 min<-min(ivp.ana.mat[which(ivp.ana.mat>0)])
 max<-max(ivp.ana.mat)
 mm<-max-min
@@ -157,5 +171,5 @@ days.list[1]<-1
 
 #-------------------------------------------------------------------------------#
 
-NAME <- paste(ARG[1], ARG[2], sep="_")  
-save.image(paste0("/blue/garrett/betherton/ROD/","ANAIVP.test", NAME, ".RData"))
+#NAME <- paste(ARG[1], ARG[2], sep="_")  
+#save.image(paste0("/blue/garrett/betherton/ROD/","ANAIVP.test", NAME, ".RData"))
